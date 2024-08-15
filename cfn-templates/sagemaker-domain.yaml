@@ -1,42 +1,32 @@
 AWSTemplateFormatVersion: '2010-09-09'
 Description: >
-  This template is for an account without a pre-existing SageMaker Studio Domain & SageMaker User Profile - it creates these.  
-  This template also includes the additional permissions which are required to run this workshop 
+  This CFN template creates a SageMaker domain, a user profile, a Jupyter App Space
 
 Parameters:
   UserProfileNamePrefix:
     Type: String
     Description: The user profile name prefix for the SageMaker workshop
-    Default: 'studio-user'
+    Default: 'studio-user-ts'
   DomainNamePrefix:
     Type: String
     Description: The domain name prefix of the Sagemaker domain
-    Default: 'ts-workshop-domain'
+    Default: 'timeseries-domain'
   OwnerID:
     Type: String
     Description: Owner identification to be written as a resource tag
     Default: 'not-set'
+  CreateMLflowServer:
+    Type: String
+    Description: Create an MLflow trackings server as part of the domain
+    Default: 'NO'
+    AllowedValues:
+      - 'YES'
+      - 'NO'
 
-Mappings: 
-  RegionMap: 
-    us-east-1: 
-      datascience: "arn:aws:sagemaker:us-east-1:081325390199:image/sagemaker-data-science-310-v1"
-      basepython: "arn:aws:sagemaker:us-east-1:081325390199:image/sagemaker-base-python-310-v1"
-      jupyter: "arn:aws:sagemaker:us-east-1:081325390199:image/jupyter-server-3"
-      tensorflow: "arn:aws:sagemaker:us-east-1:081325390199:image/tensorflow-2.12.0-cpu-py310-ubuntu20.04-sagemaker-v1.0"
+Conditions:
+  CreateMLflowServerCondition: !Equals [ !Ref CreateMLflowServer, 'YES' ]
+  OwnerIDCondition: !Equals [ !Ref OwnerID, 'not-set' ]
 
-    us-west-2: 
-      datascience: "arn:aws:sagemaker:us-west-2:236514542706:image/sagemaker-data-science-310-v1"
-      basepython: "arn:aws:sagemaker:us-west-2:236514542706:image/sagemaker-base-python-310-v1"
-      jupyter: "arn:aws:sagemaker:us-west-2:236514542706:image/jupyter-server-3"
-      tensorflow: "arn:aws:sagemaker:us-west-2:236514542706:image/tensorflow-2.12.0-cpu-py310-ubuntu20.04-sagemaker-v1.0"
-    
-    eu-central-1:
-      datascience: "arn:aws:sagemaker:eu-central-1:936697816551:image/sagemaker-data-science-310-v1"
-      basepython: "arn:aws:sagemaker:eu-central-1:936697816551:image/sagemaker-base-python-310-v1"
-      jupyter: "arn:aws:ecr:eu-central-1:936697816551:repository/looseleaf-jupyter-server-3"
-      tensorflow: "arn:aws:sagemaker:eu-central-1:936697816551:image/tensorflow-2.12.0-cpu-py310-ubuntu20.04-sagemaker-v1.0"
-    
 Resources:
   LambdaExecutionRole:
     Type: AWS::IAM::Role
@@ -61,6 +51,15 @@ Resources:
     Type: AWS::IAM::Role
     Properties:
       Policies: 
+        - PolicyName: logs
+          PolicyDocument:
+            Version: 2012-10-17
+            Statement:
+              - 
+                Effect: Allow
+                Action:
+                  - logs:FilterLogEvents
+                Resource: !Sub "arn:${AWS::Partition}:logs:*:${AWS::AccountId}:*"
         - PolicyName: iam-access
           PolicyDocument:
             Version: 2012-10-17
@@ -114,6 +113,21 @@ Resources:
               Action:
                 - servicequotas:GetServiceQuota
               Resource: !Sub 'arn:${AWS::Partition}:servicequotas:${AWS::Region}:${AWS::AccountId}:sagemaker/*'
+        - PolicyName: mlflow-permissions
+          PolicyDocument:
+            Version: 2012-10-17
+            Statement:
+            -
+              Effect: Allow
+              Action:
+                - sagemaker-mlflow:*
+                - sagemaker:CreateMlflowTrackingServer
+                - sagemaker:UpdateMlflowTrackingServer
+                - sagemaker:DeleteMlflowTrackingServer
+                - sagemaker:StartMlflowTrackingServer
+                - sagemaker:StopMlflowTrackingServer
+                - sagemaker:CreatePresignedMlflowTrackingServerUrl
+              Resource: "*"
         - PolicyName: headless-execution-permissions
           PolicyDocument:
             Version: 2012-10-17
@@ -172,6 +186,7 @@ Resources:
                 - s3:PutObject
                 - s3:DeleteObject
                 - s3:GetObject
+                - s3:PutObjectTagging
                 - sagemaker:DescribeDomain
                 - sagemaker:DescribeUserProfile
                 - sagemaker:DescribeSpace
@@ -186,6 +201,7 @@ Resources:
                 - sagemaker:DescribePipeline
                 - sagemaker:DeletePipeline
                 - sagemaker:StartPipelineExecution
+                - glue:GetConnections
               Resource: "*"
       AssumeRolePolicyDocument: 
         Version: 2012-10-17
@@ -197,12 +213,6 @@ Resources:
                 - sagemaker.amazonaws.com
                 - events.amazonaws.com
                 - forecast.amazonaws.com
-            Action: 
-              - sts:AssumeRole
-          -
-            Effect: Allow
-            Principal: 
-              Service: 
                 - lambda.amazonaws.com
             Action: 
               - sts:AssumeRole
@@ -210,7 +220,6 @@ Resources:
       ManagedPolicyArns:
         - 'arn:aws:iam::aws:policy/AmazonSageMakerFullAccess'
         - 'arn:aws:iam::aws:policy/AWSCloudFormationFullAccess'
-        - 'arn:aws:iam::aws:policy/AWSCodePipeline_FullAccess'
         - !Sub "arn:${AWS::Partition}:iam::aws:policy/AmazonSageMakerPipelinesIntegrations"
   
   LambdaExecutionPolicy:
@@ -324,7 +333,7 @@ Resources:
       Timeout: 60
       Tags:
         - Key: owner
-          Value: !Ref OwnerID
+          Value: !If [ OwnerIDCondition, !Ref 'AWS::StackId', !Ref OwnerID ]
 
   DefaultVpcFinder:
     Type: Custom::ResourceForFindingDefaultVpc
@@ -387,7 +396,7 @@ Resources:
       Timeout: 60
       Tags:
         - Key: owner
-          Value: !Ref OwnerID
+          Value: !If [ OwnerIDCondition, !Ref 'AWS::StackId', !Ref OwnerID ]
 
   EnableProjects:
     Type: Custom::ResourceForEnablingSageMakerProjects
@@ -440,7 +449,7 @@ Resources:
       Timeout: 60
       Tags:
         - Key: owner
-          Value: !Ref OwnerID
+          Value: !If [ OwnerIDCondition, !Ref 'AWS::StackId', !Ref OwnerID ]
 
   CheckIfSageMakerSCProductsRolesExist:
     Type: Custom::CheckIfIAMRolesExist
@@ -491,7 +500,7 @@ Resources:
       Timeout: 60
       Tags:
         - Key: owner
-          Value: !Ref OwnerID
+          Value: !If [ OwnerIDCondition, !Ref 'AWS::StackId', !Ref OwnerID ]
       
   DeleteS3BucketContentOnDelete:
     Type: Custom::DeleteS3BucketContent
@@ -757,7 +766,7 @@ Resources:
                 Resource:
                   - 'arn:aws:s3:::aws-glue-*'
                   - 'arn:aws:s3:::sagemaker-*'
-                  - 'arn:aws:s3:::sm-ts-cp-*'
+                  - 'arn:aws:s3:::sm-mlops-cp-*'
                   - !Sub 'arn:aws:s3:::*-${AWS::AccountId}-data*'
                   - !Sub 'arn:aws:s3:::*-${AWS::AccountId}-data*/*'
                   - !Sub 'arn:aws:s3:::*-${AWS::AccountId}-models*'
@@ -838,6 +847,9 @@ Resources:
     Properties: 
       AppNetworkAccessType: PublicInternetOnly
       AuthMode: IAM
+      DomainSettings:
+        DockerSettings:
+          EnableDockerAccess: ENABLED
       DefaultUserSettings: 
         ExecutionRole: !GetAtt SageMakerExecutionRole.Arn
         StudioWebPortal: ENABLED
@@ -847,7 +859,7 @@ Resources:
       VpcId: !GetAtt DefaultVpcFinder.VpcId
       Tags: 
         - Key: owner
-          Value: !Ref OwnerID
+          Value: !If [ OwnerIDCondition, !Ref 'AWS::StackId', !Ref OwnerID ]
 
   StudioUserProfile:
     Type: AWS::SageMaker::UserProfile
@@ -861,7 +873,7 @@ Resources:
         - Key: domain-id
           Value: !Ref StudioDomain
         - Key: owner
-          Value: !Ref OwnerID
+          Value: !If [ OwnerIDCondition, !Ref 'AWS::StackId', !Ref OwnerID ]
 
 ### S3 Bucket similar to the one created by the create domain action in the UI
   StudioS3Bucket:
@@ -876,45 +888,7 @@ Resources:
         - Key: domain-id
           Value: !Ref StudioDomain
         - Key: owner
-          Value: !Ref OwnerID
-
-  JupyterApp:
-    Type: AWS::SageMaker::App
-    DependsOn:
-      - LifeCycleConfigLambdaInvoke
-    Properties: 
-      AppName: default
-      AppType: JupyterServer
-      DomainId: !GetAtt StudioDomain.DomainId
-      UserProfileName: !Select [2, !Split ["/", !GetAtt StudioUserProfile.UserProfileArn ]]
-  
-  DataScienceApp:
-    Type: AWS::SageMaker::App
-    Properties: 
-      AppName: instance-event-engine-datascience-ml-t3-medium
-      AppType: KernelGateway
-      DomainId: !GetAtt StudioDomain.DomainId
-      ResourceSpec: 
-        InstanceType: ml.t3.medium
-        SageMakerImageArn: !FindInMap
-          - RegionMap
-          - !Ref 'AWS::Region'
-          - datascience
-      UserProfileName: !Select [2, !Split ["/", !GetAtt StudioUserProfile.UserProfileArn ]]
-
-  BasePythonApp:
-    Type: AWS::SageMaker::App
-    Properties:
-      AppName: instance-event-engine-basepython-ml-t3-medium
-      AppType: KernelGateway
-      DomainId: !GetAtt StudioDomain.DomainId
-      ResourceSpec:
-        InstanceType: ml.t3.medium
-        SageMakerImageArn: !FindInMap
-          - RegionMap
-          - !Ref 'AWS::Region'
-          - basepython
-      UserProfileName: !Select [2, !Split ["/", !GetAtt StudioUserProfile.UserProfileArn ]]
+          Value: !If [ OwnerIDCondition, !Ref 'AWS::StackId', !Ref OwnerID ]
 
   LifeCycleConfigLambdaRole:
     Type: 'AWS::IAM::Role'
@@ -995,7 +969,7 @@ Resources:
             - '    response = client.create_studio_lifecycle_config('
             - '        StudioLifecycleConfigName=lcc_config_name,'
             - '        StudioLifecycleConfigContent=base64_lcc_string,'
-            - '        StudioLifecycleConfigAppType="JupyterServer",'
+            - '        StudioLifecycleConfigAppType="JupyterLab",'
             - '   )'
             - ''
             - '    lcc_arn = response["StudioLifecycleConfigArn"]'
@@ -1003,7 +977,7 @@ Resources:
             - '        DomainId=profile.split("|")[1],'
             - '        UserProfileName=profile.split("|")[0],'
             - '        UserSettings={'
-            - '            "JupyterServerAppSettings": {'
+            - '            "JupyterLabAppSettings": {'
             - '                "DefaultResourceSpec": {"LifecycleConfigArn": lcc_arn},'
             - '                "LifecycleConfigArns": [lcc_arn]'
             - '            }'
@@ -1048,10 +1022,67 @@ Resources:
             - '        cfnresponse.send(event, context, cfnresponse.FAILED, response_data)'
       Tags:
         - Key: owner
-          Value: !Ref OwnerID
+          Value: !If [ OwnerIDCondition, !Ref 'AWS::StackId', !Ref OwnerID ]
 
   LifeCycleConfigLambdaInvoke:
     Type: AWS::CloudFormation::CustomResource
     Version: "1.0"
     Properties:
       ServiceToken: !GetAtt LifeCycleConfigLambda.Arn
+
+  JupyterAppSpace:
+    Type: AWS::SageMaker::Space
+    Properties:
+      DomainId: !GetAtt StudioDomain.DomainId
+      OwnershipSettings:
+        OwnerUserProfileName: !Select [2, !Split ["/", !GetAtt StudioUserProfile.UserProfileArn ]]
+      SpaceDisplayName: sagemaker-space
+      SpaceName: sagemaker-space
+      SpaceSettings:
+        AppType: JupyterLab
+        JupyterLabAppSettings:
+          CodeRepositories: 
+            - RepositoryUrl: https://github.com/aws-samples/amazon-sagemaker-model-registry-patterns.git
+          DefaultResourceSpec:
+            InstanceType: ml.t3.large
+        SpaceStorageSettings:
+          EbsStorageSettings:
+            EbsVolumeSizeInGb: 50
+      SpaceSharingSettings:
+        SharingType: Private
+
+  CodeEditorAppSpace:
+    Type: AWS::SageMaker::Space
+    Properties:
+      DomainId: !GetAtt StudioDomain.DomainId
+      OwnershipSettings:
+        OwnerUserProfileName: !Select [2, !Split ["/", !GetAtt StudioUserProfile.UserProfileArn ]]
+      SpaceDisplayName: codeeditor-space
+      SpaceName: codeeditor-space
+      SpaceSettings:
+        AppType: CodeEditor
+        CodeEditorAppSettings:
+          DefaultResourceSpec:
+            InstanceType: ml.t3.large
+        SpaceStorageSettings:
+          EbsStorageSettings:
+            EbsVolumeSizeInGb: 50
+      SpaceSharingSettings:
+        SharingType: Private
+
+  # MLflow tracking server
+  MlFlowServer:
+    Type: AWS::SageMaker::MlflowTrackingServer
+    Condition: CreateMLflowServerCondition
+    Properties:
+      ArtifactStoreUri: !Sub 's3://${StudioS3Bucket}/mlflow/${StudioDomain.DomainId}'
+      AutomaticModelRegistration: True
+      RoleArn: !GetAtt SageMakerExecutionRole.Arn
+      TrackingServerName: !Sub 'mlflow-${StudioDomain.DomainId}'
+      TrackingServerSize: Small
+      Tags:
+        - Key: domain-id
+          Value: !Ref StudioDomain
+        - Key: owner
+          Value: !If [ OwnerIDCondition, !Ref 'AWS::StackId', !Ref OwnerID ]
+
