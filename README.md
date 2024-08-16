@@ -5,8 +5,8 @@ This project demonstrates how to use AWS services to implement time series forec
 1. Amazon SageMaker Canvas
 2. Amazon SageMaker Autopilot API
 3. Amazon SageMaker DeepAR
-4. AutoGluon
-5. Chronos
+4. Chronos
+5. AutoGluon
 6. Amazon SageMaker notebooks
 7. Amazon QuickSight forecast
 
@@ -16,6 +16,8 @@ To run the notebooks in this project you must use [SageMaker Studio](https://aws
 If you'd lke to create a new domain, you can follow the onboarding [instructions](https://docs.aws.amazon.com/sagemaker/latest/dg/gs-studio-onboard.html) in the Developer Guide or use the provided AWS CloudFormation [template]() that creates a SageMaker domain, a user profile, and adds the IAM roles required for executing the provided notebooks.
 
 ## Datasets
+
+
 
 1. For Canvas: `consumer_electronics`
 2. For Autopilot
@@ -106,22 +108,28 @@ Existing content:
 - [Deep AR Forecasting](https://sagemaker.readthedocs.io/en/stable/algorithms/time_series/deep_ar.html)
 - [Example notebook](https://github.com/aws/amazon-sagemaker-examples/blob/main/introduction_to_amazon_algorithms/deepar_electricity/DeepAR-Electricity.ipynb)
 
+## Example 4: Chronos
 
-## Example 4: AutoGluon
+Chronos models on HF
+Use SageMaker Studio notebook
+
+Existing content:
+- [Chronos models on Huggingface](https://huggingface.co/amazon/chronos-t5-large)
+- [Chronos GitHub](https://github.com/amazon-science/chronos-forecasting)
+- [Chronos: Learning the Language of Time Series](https://arxiv.org/html/2403.07815v1)
+- [Adapting language model architectures for time series forecasting](https://www.amazon.science/blog/adapting-language-model-architectures-for-time-series-forecasting)
+
+
+## Example 5: AutoGluon
 
 Existing content:
 - [AutoGluon time series forecasting](https://auto.gluon.ai/stable/tutorials/timeseries/index.html)
 
+- AutoGluon time series
+- AutoGluon Chronos
+    - [AutoGluon forecasting with Chronos](https://auto.gluon.ai/stable/tutorials/timeseries/forecasting-chronos.html)
+    - [Forecasting with Chronos notebook Colab](https://colab.research.google.com/github/autogluon/autogluon/blob/stable/docs/tutorials/timeseries/forecasting-chronos.ipynb)
 
-## Example 5: Chronos
-
-Existing content:
-- [AutoGluon forecasting with Chronos](https://auto.gluon.ai/stable/tutorials/timeseries/forecasting-chronos.html)
-- [Chronos GitHub](https://github.com/amazon-science/chronos-forecasting)
-- [Forecasting with Chronos notebook Colab](https://colab.research.google.com/github/autogluon/autogluon/blob/stable/docs/tutorials/timeseries/forecasting-chronos.ipynb)
-- [Chronos: Learning the Language of Time Series](https://arxiv.org/html/2403.07815v1)
-- [Adapting language model architectures for time series forecasting](https://www.amazon.science/blog/adapting-language-model-architectures-for-time-series-forecasting)
-- [Chronos models on Huggingface](https://huggingface.co/amazon/chronos-t5-large)
 
 AutoGluon-TimeSeries (AG-TS) now features [Chronos](https://github.com/amazon-science/chronos-forecasting), a family of pretrained time series forecasting models. Chronos models are based on language model architectures, and work by quantizing time series into buckets which are treated as tokens. Language models are then trained on these token sequences using cross-entropy loss.
 
@@ -173,6 +181,8 @@ Besides a graphical forecasting, you can also add a forecast as a narrative in a
 ## Results and comparison
 
 TBD: add qualitative/quantitative comparison of model performance, add a summary tables across multiple services
+
+[Evaluating Predictor Accuracy](https://docs.aws.amazon.com/forecast/latest/dg/metrics.html)
 
 ## Resources
 
