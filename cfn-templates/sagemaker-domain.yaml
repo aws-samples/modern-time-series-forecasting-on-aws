@@ -1044,7 +1044,7 @@ Resources:
           CodeRepositories: 
             - RepositoryUrl: https://github.com/aws-samples/amazon-sagemaker-model-registry-patterns.git
           DefaultResourceSpec:
-            InstanceType: ml.t3.large
+            InstanceType: ml.c5.4xlarge
         SpaceStorageSettings:
           EbsStorageSettings:
             EbsVolumeSizeInGb: 50
