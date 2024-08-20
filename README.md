@@ -88,9 +88,11 @@ You can now use "Model package group name" to have access to a model version via
 
 ## Example 2: Amazon SageMaker Autopilot API
 
+Open the [lab 2 notebook](./notebooks/lab2_sagemaker_autopilot_api.ipynb) and follow the instructions.
+
 Note: previous Autopilot UX in Studio Classic merged with Canvas as of re:Invent 2023. All AutoML functionality is moved to Canvas as of now.
 
-Existing content:
+Additional SageMaker Autopilot API links:
 - [Amazon SageMaker Autopilot](https://docs.aws.amazon.com/sagemaker/latest/dg/autopilot-automate-model-development.html)
 - [Time series forecasting algorithms in SageMaker](https://docs.aws.amazon.com/sagemaker/latest/dg/timeseries-forecasting-algorithms.html)
 - Example notebook [Time series Forecasting with Amazon SageMaker Autopilot](https://github.com/aws/amazon-sagemaker-examples/blob/main/autopilot/autopilot_time_series.ipynb)
