@@ -268,7 +268,8 @@ Resources:
           - Sid: ServiceCatalogPermission
             Effect: Allow
             Action:
-              - servicecatalog:*
+              - servicecatalog:ListAcceptedPortfolioShares
+              - servicecatalog:AssociatePrincipalWithPortfolio
             Resource: '*'
           - Sid: SageMakerExecPassRole
             Effect: Allow
