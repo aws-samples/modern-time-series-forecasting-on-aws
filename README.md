@@ -1,7 +1,9 @@
-# Time Series forecasting with AWS services
+# Modern Time Series Forecasting on AWS
+
+![](./img/time-series-on-AWS-small-3.png)
 
 ## Overview
-This project demonstrates how to use AWS services to implement time series forecasting. It covers the following examples and AWS services:
+This workshop demonstrates how to use AWS services to implement time series forecasting. It covers the following examples and AWS services:
 1. Amazon SageMaker Canvas
 2. Amazon SageMaker Autopilot API
 3. Amazon SageMaker DeepAR
@@ -53,6 +55,7 @@ Additional DeepAR links:
 - [Deep AR Forecasting](https://sagemaker.readthedocs.io/en/stable/algorithms/time_series/deep_ar.html)
 - [Example notebook](https://github.com/aws/amazon-sagemaker-examples/blob/main/introduction_to_amazon_algorithms/deepar_electricity/DeepAR-Electricity.ipynb)
 - [Deep Demand Forecasting with Amazon SageMaker notebook](https://github.com/awslabs/sagemaker-deep-demand-forecast/blob/mainline/src/deep-demand-forecast.ipynb)
+- [Predictive Analytics with Time-series Machine Learning on Amazon Timestream](https://aws.amazon.com/blogs/database/predictive-analytics-with-time-series-machine-learning-on-amazon-timestream/)
 
 ## Example 4: Chronos
 
@@ -141,6 +144,10 @@ TBD: add qualitative/quantitative comparison of model performance, add a summary
 - [AutoGluon](https://github.com/autogluon/autogluon)
 - [AutoGluon Time series forecasting](https://auto.gluon.ai/stable/tutorials/timeseries/index.html)
 - [GluonTS - Probabilistic Time Series Modeling in Python](https://github.com/awslabs/gluonts)
+
+### Books and whitepapers
+- [Time Series Analysis on AWS: Learn how to build forecasting models and detect anomalies in your time series data](https://www.amazon.com/Time-Analysis-AWS-forecasting-anomalies-ebook/dp/B09MMLLWDY)
+- [Time Series Forecasting Principles with Amazon Forecast](https://docs.aws.amazon.com/whitepapers/latest/time-series-forecasting-principles-with-amazon-forecast/time-series-forecasting-principles-with-amazon-forecast.html)
 
 ### Blog posts
 - [Robust time series forecasting with MLOps on Amazon SageMaker](https://aws.amazon.com/blogs/machine-learning/robust-time-series-forecasting-with-mlops-on-amazon-sagemaker/)
