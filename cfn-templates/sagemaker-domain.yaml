@@ -199,6 +199,18 @@ Resources:
                 - sagemaker:StopMlflowTrackingServer
                 - sagemaker:CreatePresignedMlflowTrackingServerUrl
               Resource: "*"
+        - PolicyName: bedrock-models-access
+          PolicyDocument:
+            Version: 2012-10-17
+            Statement:
+            - 
+              Effect: Allow
+              Action:
+                - bedrock:GetFoundationModelAvailability
+                - bedrock:InvokeModel
+                - bedrock:InvokeModelWithResponseStream
+              Resource:
+                - 'arn:aws:bedrock:*::foundation-model/*'
         - PolicyName: headless-execution-permissions
           PolicyDocument:
             Version: 2012-10-17

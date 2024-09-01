@@ -56,6 +56,7 @@ Additional DeepAR links:
 - [Example notebook](https://github.com/aws/amazon-sagemaker-examples/blob/main/introduction_to_amazon_algorithms/deepar_electricity/DeepAR-Electricity.ipynb)
 - [Deep Demand Forecasting with Amazon SageMaker notebook](https://github.com/awslabs/sagemaker-deep-demand-forecast/blob/mainline/src/deep-demand-forecast.ipynb)
 - [Predictive Analytics with Time-series Machine Learning on Amazon Timestream](https://aws.amazon.com/blogs/database/predictive-analytics-with-time-series-machine-learning-on-amazon-timestream/)
+- [Lot of Chronos-related content on Chronos GitHub](https://github.com/amazon-science/chronos-forecasting?tab=readme-ov-file#-coverage)
 
 ## Example 4: Chronos
 
