@@ -770,7 +770,7 @@ Resources:
             InstanceType: ml.c5.4xlarge
         SpaceStorageSettings:
           EbsStorageSettings:
-            EbsVolumeSizeInGb: 50
+            EbsVolumeSizeInGb: 100
       SpaceSharingSettings:
         SharingType: Private
 

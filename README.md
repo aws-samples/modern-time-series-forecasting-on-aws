@@ -60,12 +60,12 @@ Additional DeepAR links:
 
 ## Example 4: Chronos
 
-Chronos models on HF
-Use SageMaker Studio notebook
+Open the [lab 4 notebook](./notebooks/lab4_chronos.ipynb) and follow the instructions.
 
-Existing content:
+Links to more Chronos content:
 - [Chronos models on Huggingface](https://huggingface.co/amazon/chronos-t5-large)
 - [Chronos GitHub](https://github.com/amazon-science/chronos-forecasting)
+- [Lot of Chronos-related content on Chronos GitHub](https://github.com/amazon-science/chronos-forecasting?tab=readme-ov-file#-coverage)
 - [Chronos: Learning the Language of Time Series](https://arxiv.org/html/2403.07815v1)
 - [Adapting language model architectures for time series forecasting](https://www.amazon.science/blog/adapting-language-model-architectures-for-time-series-forecasting)
 - [Evaluating Chronos models](https://github.com/amazon-science/chronos-forecasting/blob/main/scripts/README.md#evaluating-chronos-models)
@@ -73,23 +73,15 @@ Existing content:
 
 ## Example 5: AutoGluon
 
-Existing content:
-- [AutoGluon time series forecasting](https://auto.gluon.ai/stable/tutorials/timeseries/index.html)
+Open the [lab 5 notebook](./notebooks/lab5_autogluon.ipynb) and follow the instructions.
 
+Links to AutoGluon content:
 - AutoGluon time series
+    - [AutoGluon time series forecasting](https://auto.gluon.ai/stable/tutorials/timeseries/index.html)
 - AutoGluon Chronos
     - [AutoGluon forecasting with Chronos](https://auto.gluon.ai/stable/tutorials/timeseries/forecasting-chronos.html)
     - [Forecasting with Chronos notebook Colab](https://colab.research.google.com/github/autogluon/autogluon/blob/stable/docs/tutorials/timeseries/forecasting-chronos.ipynb)
 
-
-AutoGluon-TimeSeries (AG-TS) now features [Chronos](https://github.com/amazon-science/chronos-forecasting), a family of pretrained time series forecasting models. Chronos models are based on language model architectures, and work by quantizing time series into buckets which are treated as tokens. Language models are then trained on these token sequences using cross-entropy loss.
-
-The current iteration of Chronos models, [available](https://www.google.com/url?q=https%3A%2F%2Fhuggingface.co%2Famazon%2Fchronos-t5-large) on Hugging Face 🤗, is based on the T5 architecture and was trained on a large corpus of open-source time series data augmented with synthetic data generation techniques. The Chronos [paper](https://www.google.com/url?q=https%3A%2F%2Farxiv.org%2Fabs%2F2403.07815) provides greater detail about the models and how they were trained.
-
-AG-TS provides a robust and easy way to use Chronos through the familiar `TimeSeriesPredictor` API.
-
-- Chronos can be combined with other forecasting models to build accurate ensembles using the `"high_quality"` and `"best_quality"` presets.
-- Alternatively, Chronos can be used as a standalone zero-shot model with presets such as `"chronos_small"` or `"chronos_base"`.
 
 ## Example 6: Amazon SageMaker
 
