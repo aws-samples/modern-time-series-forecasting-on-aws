@@ -310,6 +310,7 @@ Resources:
         - arn:aws:iam::aws:policy/service-role/AmazonSageMakerCanvasDirectDeployAccess
         - arn:aws:iam::aws:policy/AmazonSageMakerCanvasAIServicesAccess
         - arn:aws:iam::aws:policy/AmazonSageMakerCanvasBedrockAccess
+        - arn:aws:iam::aws:policy/AWSPriceListServiceFullAccess
         - !Sub "arn:${AWS::Partition}:iam::aws:policy/AmazonSageMakerPipelinesIntegrations"
   
   EnableCanvasSettingsLambda:
@@ -771,25 +772,6 @@ Resources:
         SpaceStorageSettings:
           EbsStorageSettings:
             EbsVolumeSizeInGb: 100
-      SpaceSharingSettings:
-        SharingType: Private
-
-  CodeEditorAppSpace:
-    Type: AWS::SageMaker::Space
-    Properties:
-      DomainId: !GetAtt StudioDomain.DomainId
-      OwnershipSettings:
-        OwnerUserProfileName: !Select [2, !Split ["/", !GetAtt StudioUserProfile.UserProfileArn ]]
-      SpaceDisplayName: codeeditor-space
-      SpaceName: codeeditor-space
-      SpaceSettings:
-        AppType: CodeEditor
-        CodeEditorAppSettings:
-          DefaultResourceSpec:
-            InstanceType: ml.t3.large
-        SpaceStorageSettings:
-          EbsStorageSettings:
-            EbsVolumeSizeInGb: 50
       SpaceSharingSettings:
         SharingType: Private
 
