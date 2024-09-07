@@ -11,6 +11,10 @@ Parameters:
     Type: String
     Description: The domain name prefix of the Sagemaker domain
     Default: 'timeseries-domain'
+  JupyterLabAppInstance:
+    Type: String
+    Description: Name of an ML instance to run JupyterLab App space
+    Default: 'ml.g5.4xlarge'
   OwnerID:
     Type: String
     Description: Owner identification to be written as a resource tag
@@ -567,7 +571,43 @@ Resources:
     Properties:
       ServiceToken: !GetAtt DeleteS3BucketContentLambda.Arn
       BucketName: !Ref StudioS3Bucket
- 
+
+  DelayLambda:
+    Type: AWS::Lambda::Function
+    Properties:
+      FunctionName: DelayLambda
+      Handler: index.lambda_handler
+      Role: !GetAtt LambdaExecutionRole.Arn
+      Runtime: python3.10
+      Timeout: 900
+      Code:
+        ZipFile: |
+          import time
+          import cfnresponse
+
+          def lambda_handler(event, context):
+              try:
+                  delay_sec = int(event.get('ResourceProperties', {}).get('DelayInSec', 60))
+                  time.sleep(delay_sec)
+                  cfnresponse.send(event, context, cfnresponse.SUCCESS, {
+                      'Data': f'Delayed for {delay_sec} seconds'
+                  }, event.get('PhysicalResourceId', 'DelayCustomResource'))
+              except Exception as e:
+                  cfnresponse.send(event, context, cfnresponse.FAILED, {
+                      'Error': str(e)
+                  }, event.get('PhysicalResourceId', 'DelayCustomResource'))
+      Tags:
+        - Key: owner
+          Value: !If [ OwnerIDCondition, !Ref 'AWS::StackId', !Ref OwnerID ]
+      
+  Delay:
+    DependsOn:
+      - StudioDomain
+    Type: Custom::DelayLambda
+    Properties:
+      ServiceToken: !GetAtt DelayLambda.Arn
+      DelayInSec: 60
+
   StudioDomain:
     Type: AWS::SageMaker::Domain
     Properties: 
@@ -588,6 +628,8 @@ Resources:
           Value: !If [ OwnerIDCondition, !Ref 'AWS::StackId', !Ref OwnerID ]
 
   StudioUserProfile:
+    DependsOn:
+      - Delay
     Type: AWS::SageMaker::UserProfile
     Properties: 
       DomainId: !GetAtt StudioDomain.DomainId
@@ -673,7 +715,7 @@ Resources:
             - '    ''then'','
             - '    ''   echo "Running in job mode, skip lcc"'','
             - '    ''else'','
-            - '    ''   git clone https://github.com/aws-samples/amazon-sagemaker-from-idea-to-production.git'','
+            - '    ''   git clone https://github.com/aws-samples/amazon-sagemaker-from-idea-to-production.git || { echo "Error: Failed to clone repository"; exit 0; }'','
             - '    ''   echo "Files cloned from GitHub repo"'','
             - '    ''fi'','
             - '    '''','
@@ -768,7 +810,7 @@ Resources:
           CodeRepositories: 
             - RepositoryUrl: https://github.com/aws-samples/amazon-sagemaker-model-registry-patterns.git
           DefaultResourceSpec:
-            InstanceType: ml.c5.4xlarge
+            InstanceType: !Ref JupyterLabAppInstance
         SpaceStorageSettings:
           EbsStorageSettings:
             EbsVolumeSizeInGb: 100

@@ -1,7 +1,5 @@
 # Modern Time Series Forecasting on AWS
 
-![](./img/time-series-on-AWS-small-3.png)
-
 ## Overview
 This workshop demonstrates how to use AWS services to implement time series forecasting. It covers the following examples and AWS services:
 1. Amazon SageMaker Canvas
@@ -9,13 +7,15 @@ This workshop demonstrates how to use AWS services to implement time series fore
 3. Amazon SageMaker DeepAR
 4. Chronos
 5. AutoGluon
-6. Amazon SageMaker notebooks
+6. Amazon SageMaker custom algorithm
 7. Amazon QuickSight forecast
 
 ## Getting started
 To run the notebooks in this project you must use [SageMaker Studio](https://aws.amazon.com/sagemaker/studio/) which requires a [SageMaker domain](https://docs.aws.amazon.com/sagemaker/latest/dg/gs-studio-onboard.html).
 
 If you'd lke to create a new domain, you can follow the onboarding [instructions](https://docs.aws.amazon.com/sagemaker/latest/dg/gs-studio-onboard.html) in the Developer Guide or use the provided AWS CloudFormation [template](./cfn-templates/sagemaker-domain.yaml) that creates a SageMaker domain, a user profile, and adds the IAM roles required for executing the provided notebooks.
+
+You can run all notebooks independently and in any order. We recommend to start with the notebook `lab1_sagemaker_canvas` if you'd like to run the whole workshop.
 
 ## Datasets
 
@@ -56,7 +56,7 @@ Additional DeepAR links:
 - [Example notebook](https://github.com/aws/amazon-sagemaker-examples/blob/main/introduction_to_amazon_algorithms/deepar_electricity/DeepAR-Electricity.ipynb)
 - [Deep Demand Forecasting with Amazon SageMaker notebook](https://github.com/awslabs/sagemaker-deep-demand-forecast/blob/mainline/src/deep-demand-forecast.ipynb)
 - [Predictive Analytics with Time-series Machine Learning on Amazon Timestream](https://aws.amazon.com/blogs/database/predictive-analytics-with-time-series-machine-learning-on-amazon-timestream/)
-- [Lot of Chronos-related content on Chronos GitHub](https://github.com/amazon-science/chronos-forecasting?tab=readme-ov-file#-coverage)
+- [Bike-Share Demand Forecasting 2b: SageMaker DeepAR Algorithm](https://github.com/aws-samples/time-series-forecasting-on-aws/blob/main/2b_SageMaker_Built-In_DeepAR.ipynb)
 
 ## Example 4: Chronos
 
@@ -69,6 +69,7 @@ Links to more Chronos content:
 - [Chronos: Learning the Language of Time Series](https://arxiv.org/html/2403.07815v1)
 - [Adapting language model architectures for time series forecasting](https://www.amazon.science/blog/adapting-language-model-architectures-for-time-series-forecasting)
 - [Evaluating Chronos models](https://github.com/amazon-science/chronos-forecasting/blob/main/scripts/README.md#evaluating-chronos-models)
+- [Lot of Chronos-related content on Chronos GitHub](https://github.com/amazon-science/chronos-forecasting?tab=readme-ov-file#-coverage)
 
 
 ## Example 5: AutoGluon
@@ -83,11 +84,14 @@ Links to AutoGluon content:
     - [Forecasting with Chronos notebook Colab](https://colab.research.google.com/github/autogluon/autogluon/blob/stable/docs/tutorials/timeseries/forecasting-chronos.ipynb)
 
 
-## Example 6: Amazon SageMaker
+## Example 6: Amazon SageMaker custom algorithm
 
-Existing content:
+This example is under development.
+
+Refer to the following resources to see how you can run custom algorithms on SageMaker:
 - [Robust time series forecasting with MLOps on Amazon SageMaker](https://aws.amazon.com/blogs/machine-learning/robust-time-series-forecasting-with-mlops-on-amazon-sagemaker/)
 - [Deep demand forecast with Amazon SageMaker](https://github.com/awslabs/sagemaker-deep-demand-forecast)
+- [Informer: Beyond Efficient Transformer for Long Sequence Time-Series Forecasting (AAAI'21 Best Paper)](https://github.com/aws-samples/time-series-forecasting-on-aws/blob/main/3_SagaMaker_Custom_algorithm_Informer.ipynb)
 
 
 ## Example 7: Amazon QuickSight forecast
@@ -153,6 +157,7 @@ TBD: add qualitative/quantitative comparison of model performance, add a summary
 - [Time series forecasting with AWS services workshop](https://catalog.us-east-1.prod.workshops.aws/workshops/caef4710-3721-4957-a2ce-33799920ef72/en-US)
 - [Time series Forecasting with Amazon SageMaker Autopilot](https://github.com/aws/amazon-sagemaker-examples/blob/main/autopilot/autopilot_time_series.ipynb)
 - [Deep Demand Forecasting with Amazon SageMaker notebook](https://github.com/awslabs/sagemaker-deep-demand-forecast/blob/mainline/src/deep-demand-forecast.ipynb)
+- [Timeseries Forecasting on AWS](https://github.com/aws-samples/time-series-forecasting-on-aws)
 
 ---
 
