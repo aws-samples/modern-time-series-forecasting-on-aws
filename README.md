@@ -13,9 +13,12 @@ This workshop demonstrates how to use AWS services to implement time series fore
 ## Getting started
 To run the notebooks in this project you must use [SageMaker Studio](https://aws.amazon.com/sagemaker/studio/) which requires a [SageMaker domain](https://docs.aws.amazon.com/sagemaker/latest/dg/gs-studio-onboard.html).
 
-If you'd lke to create a new domain, you can follow the onboarding [instructions](https://docs.aws.amazon.com/sagemaker/latest/dg/gs-studio-onboard.html) in the Developer Guide or use the provided AWS CloudFormation [template](./cfn-templates/sagemaker-domain.yaml) that creates a SageMaker domain, a user profile, and adds the IAM roles required for executing the provided notebooks.
+If you'd lke to create a new domain, you have two options:
+1. Use the provided AWS CloudFormation [template](./cfn-templates/sagemaker-domain.yaml) that creates a SageMaker domain, a user profile, and adds the IAM roles required for executing the provided notebooks - this is the recommended approach
+1. Follow the onboarding [instructions](https://docs.aws.amazon.com/sagemaker/latest/dg/gs-studio-onboard.html) in the Developer Guide and create a new domain and a user profile via AWS Console
 
-You can run all notebooks independently and in any order. We recommend to start with the notebook `lab1_sagemaker_canvas` if you'd like to run the whole workshop.
+## Workshop flow
+You can run all notebooks independently of each other and in any order. We recommend to start with the notebook `lab1_sagemaker_canvas` if you'd like to run the whole workshop.
 
 ## Datasets
 
@@ -32,6 +35,7 @@ Open the [lab 1 notebook](./notebooks/lab1_sagemaker_canvas.ipynb) and follow th
 Additional SageMaker Canvas links:
 - [Time Series Forecasts in Amazon SageMaker Canvas](https://docs.aws.amazon.com/sagemaker/latest/dg/canvas-time-series.html)
 - [Canvas Workshop - time series forecast lab](https://catalog.workshops.aws/canvas-immersion-day/en-US/1-use-cases/3-retail)
+- [Time-Series Forecasting Using Amazon SageMaker Canvas](https://catalog.us-east-1.prod.workshops.aws/workshops/866925a4-cb5f-4a3d-9cd7-80edc0aa5f0c/en-US/4-0sagemakercanvas)
 
 
 ## Example 2: Amazon SageMaker Autopilot API
@@ -45,6 +49,7 @@ Additional SageMaker Autopilot API links:
 - [Time series forecasting algorithms in SageMaker](https://docs.aws.amazon.com/sagemaker/latest/dg/timeseries-forecasting-algorithms.html)
 - Example notebook [Time series Forecasting with Amazon SageMaker Autopilot](https://github.com/aws/amazon-sagemaker-examples/blob/main/autopilot/autopilot_time_series.ipynb)
 - [Lab 2 - Demand Forecasting with SageMaker Autopilot API](https://catalog.us-east-1.prod.workshops.aws/workshops/caef4710-3721-4957-a2ce-33799920ef72/en-US/40-sagemakerautopilot)
+- [Time-Series Forecasting with Amazon SageMaker Autopilot]()
 
 ## Example 3: Amazon SageMaker DeepAR
 
@@ -131,6 +136,27 @@ TBD: add qualitative/quantitative comparison of model performance, add a summary
 
 [Evaluating Predictor Accuracy](https://docs.aws.amazon.com/forecast/latest/dg/metrics.html)
 
+## Clean up
+To avoid charges, you must remove all project-provisioned and generated resources from your AWS account. 
+
+### Shut down SageMaker resources
+You must complete this section before deleting the SageMaker domain or the CloudFormation stack.
+
+Complete the following activities to shut down your Amazon SageMaker resources:
+- [Log out of Canvas](https://docs.aws.amazon.com/sagemaker/latest/dg/canvas-log-out.html)
+- Make sure to delete all endpoints created by this workshop including Canvas asynchronous endpoints
+- [Stop running applications and spaces in Studio](https://docs.aws.amazon.com/sagemaker/latest/dg/studio-updated-running.html#studio-updated-running-stop) > follow the instructions in the section **Use the Studio UI to delete your domain applications**
+
+### Remove the SageMaker domain
+You don't need to complete this section if you run an AWS-instructor led workshop in an AWS-provisioned account.
+
+If you used the AWS Console to provision a Studio domain for this workshop, and don't need the domain, you can delete the domain by following the instructions in the [Developer Guide](https://docs.aws.amazon.com/sagemaker/latest/dg/gs-studio-delete-domain.html). 
+
+If you provisioned a Studio domain with the provided CloudFormation template, you can delete the CloudFormation stack in the AWS console.
+
+If you provisioned a new VPC for the domain, go to the [VPC console](https://console.aws.amazon.com/vpc/home?#vpcs) and delete the provisioned VPC.
+
+
 ## Resources
 
 ### Algorithms
@@ -141,6 +167,7 @@ TBD: add qualitative/quantitative comparison of model performance, add a summary
 - [AutoGluon](https://github.com/autogluon/autogluon)
 - [AutoGluon Time series forecasting](https://auto.gluon.ai/stable/tutorials/timeseries/index.html)
 - [GluonTS - Probabilistic Time Series Modeling in Python](https://github.com/awslabs/gluonts)
+- [Informer: Beyond Efficient Transformer for Long Sequence Time-Series Forecasting](https://arxiv.org/abs/2012.07436)
 
 ### Books and whitepapers
 - [Time Series Analysis on AWS: Learn how to build forecasting models and detect anomalies in your time series data](https://www.amazon.com/Time-Analysis-AWS-forecasting-anomalies-ebook/dp/B09MMLLWDY)
@@ -158,6 +185,14 @@ TBD: add qualitative/quantitative comparison of model performance, add a summary
 - [Time series Forecasting with Amazon SageMaker Autopilot](https://github.com/aws/amazon-sagemaker-examples/blob/main/autopilot/autopilot_time_series.ipynb)
 - [Deep Demand Forecasting with Amazon SageMaker notebook](https://github.com/awslabs/sagemaker-deep-demand-forecast/blob/mainline/src/deep-demand-forecast.ipynb)
 - [Timeseries Forecasting on AWS](https://github.com/aws-samples/time-series-forecasting-on-aws)
+- [Inventory Forecasting using Amazon SageMaker](https://catalog.us-east-1.prod.workshops.aws/workshops/866925a4-cb5f-4a3d-9cd7-80edc0aa5f0c/en-US)
+
+
+## QR code for this GitHub repository
+
+Short link: https://bit.ly/47hnKH6
+
+![](./img/git-repo-qr-code.png)
 
 ---
 

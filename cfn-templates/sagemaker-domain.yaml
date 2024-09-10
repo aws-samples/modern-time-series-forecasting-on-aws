@@ -230,7 +230,7 @@ Resources:
                 - events:RemoveTargets
                 - events:DisableRule
                 - events:EnableRule
-              Resource: "*"
+              Resource: '*'
               Condition:
                 StringEquals:
                   'aws:ResourceTag/sagemaker:is-scheduling-notebook-job': 'true'
@@ -289,7 +289,7 @@ Resources:
                 - sagemaker:DeletePipeline
                 - sagemaker:StartPipelineExecution
                 - glue:GetConnections
-              Resource: "*"
+              Resource: "test"
       AssumeRolePolicyDocument: 
         Version: 2012-10-17
         Statement:
@@ -715,7 +715,7 @@ Resources:
             - '    ''then'','
             - '    ''   echo "Running in job mode, skip lcc"'','
             - '    ''else'','
-            - '    ''   git clone https://github.com/aws-samples/amazon-sagemaker-from-idea-to-production.git || { echo "Error: Failed to clone repository"; exit 0; }'','
+            - '    ''   git clone https://github.com/aws-samples/modern-time-series-forecasting-on-aws.git || { echo "Error: Failed to clone repository"; exit 0; }'','
             - '    ''   echo "Files cloned from GitHub repo"'','
             - '    ''fi'','
             - '    '''','
@@ -802,8 +802,8 @@ Resources:
       DomainId: !GetAtt StudioDomain.DomainId
       OwnershipSettings:
         OwnerUserProfileName: !Select [2, !Split ["/", !GetAtt StudioUserProfile.UserProfileArn ]]
-      SpaceDisplayName: sagemaker-space
-      SpaceName: sagemaker-space
+      SpaceDisplayName: ts-space
+      SpaceName: ts-space
       SpaceSettings:
         AppType: JupyterLab
         JupyterLabAppSettings:
