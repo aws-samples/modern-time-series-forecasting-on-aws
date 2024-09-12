@@ -172,6 +172,7 @@ If you provisioned a new VPC for the domain, go to the [VPC console](https://con
 ### Books and whitepapers
 - [Time Series Analysis on AWS: Learn how to build forecasting models and detect anomalies in your time series data](https://www.amazon.com/Time-Analysis-AWS-forecasting-anomalies-ebook/dp/B09MMLLWDY)
 - [Time Series Forecasting Principles with Amazon Forecast](https://docs.aws.amazon.com/whitepapers/latest/time-series-forecasting-principles-with-amazon-forecast/time-series-forecasting-principles-with-amazon-forecast.html)
+- [Large Language Models Are Zero-Shot Time Series Forecasters](https://arxiv.org/pdf/2310.07820)
 
 ### Blog posts
 - [Robust time series forecasting with MLOps on Amazon SageMaker](https://aws.amazon.com/blogs/machine-learning/robust-time-series-forecasting-with-mlops-on-amazon-sagemaker/)
