@@ -97,6 +97,7 @@ Refer to the following resources to see how you can run custom algorithms on Sag
 - [Robust time series forecasting with MLOps on Amazon SageMaker](https://aws.amazon.com/blogs/machine-learning/robust-time-series-forecasting-with-mlops-on-amazon-sagemaker/)
 - [Deep demand forecast with Amazon SageMaker](https://github.com/awslabs/sagemaker-deep-demand-forecast)
 - [Informer: Beyond Efficient Transformer for Long Sequence Time-Series Forecasting (AAAI'21 Best Paper)](https://github.com/aws-samples/time-series-forecasting-on-aws/blob/main/3_SagaMaker_Custom_algorithm_Informer.ipynb)
+- [GluonTS - Probabilistic Time Series Modeling in Python](https://github.com/awslabs/gluonts)
 
 
 ## Example 7: Amazon QuickSight forecast
