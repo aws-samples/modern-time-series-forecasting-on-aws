@@ -289,7 +289,7 @@ Resources:
                 - sagemaker:DeletePipeline
                 - sagemaker:StartPipelineExecution
                 - glue:GetConnections
-              Resource: "test"
+              Resource: "*"
       AssumeRolePolicyDocument: 
         Version: 2012-10-17
         Statement:
