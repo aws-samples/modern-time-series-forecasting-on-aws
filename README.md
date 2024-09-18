@@ -49,7 +49,6 @@ Additional SageMaker Autopilot API links:
 - [Time series forecasting algorithms in SageMaker](https://docs.aws.amazon.com/sagemaker/latest/dg/timeseries-forecasting-algorithms.html)
 - Example notebook [Time series Forecasting with Amazon SageMaker Autopilot](https://github.com/aws/amazon-sagemaker-examples/blob/main/autopilot/autopilot_time_series.ipynb)
 - [Lab 2 - Demand Forecasting with SageMaker Autopilot API](https://catalog.us-east-1.prod.workshops.aws/workshops/caef4710-3721-4957-a2ce-33799920ef72/en-US/40-sagemakerautopilot)
-- [Time-Series Forecasting with Amazon SageMaker Autopilot]()
 
 ## Example 3: Amazon SageMaker DeepAR
 
@@ -74,7 +73,7 @@ Links to more Chronos content:
 - [Chronos: Learning the Language of Time Series](https://arxiv.org/html/2403.07815v1)
 - [Adapting language model architectures for time series forecasting](https://www.amazon.science/blog/adapting-language-model-architectures-for-time-series-forecasting)
 - [Evaluating Chronos models](https://github.com/amazon-science/chronos-forecasting/blob/main/scripts/README.md#evaluating-chronos-models)
-- [Lot of Chronos-related content on Chronos GitHub](https://github.com/amazon-science/chronos-forecasting?tab=readme-ov-file#-coverage)
+- [Chronos-related content on Chronos GitHub](https://github.com/amazon-science/chronos-forecasting?tab=readme-ov-file#-coverage)
 
 
 ## Example 5: AutoGluon
@@ -101,27 +100,7 @@ Refer to the following resources to see how you can run custom algorithms on Sag
 
 
 ## Example 7: Amazon QuickSight forecast
-[Amazon QuickSight](https://docs.aws.amazon.com/quicksight/latest/user/welcome.html) has ML features to give you hidden insights and trends in your data. One of these ML features is **ML-powered forecast**. The built-in ML forecast uses [Random Cut Forest (RCF) algorithm](https://docs.aws.amazon.com/quicksight/latest/user/concept-of-ml-algorithms.html) to detect seasonality, trends, exclude outliers, and impute missing values. For more details on how QuickSight uses  RCF to generate forecasts, see the [developer guide](https://docs.aws.amazon.com/quicksight/latest/user/how-does-rcf-generate-forecasts.html).
-
-Flow this step-by-step guide to create a QuickSight dashboard and a forecast for a dataset in `/data` folder of this repository:
-
-1. To create a dataset in QuickSight from a new data source, provide connection information to the data source. You can imported the dataset directly from the local disk
-2. Create a new analysis and visual
-3. On the QuickSight start page, choose **Analyses**, and then choose **New analysis**.
-4. Choose the dataset that you want to include in your new analysis, and then choose **Use in Analysis** in the top right.
-5. In the New sheet pop-up that appears, choose the Interactive sheet, tiled layout.
-6. Choose add and create visual.
-7. Choose the Line chart of a visual type from the Visual types pane.
-8. Use the column `ts` as X AXIS. We created the monthly demand forecasting for the all items
-9. Drag the column `demand` as value
-10. On the menu in the upper-right corner of the visual, choose the Menu options icon (the three dots), and then choose **Add forecast**. 
-
-    QuickSight automatically analyzes the historical data using ML, and displays a graphical forecast for the next N periods. Forecast properties apply to all items in the visual. If you want individual forecasts for each store, consider creating a separate visual for each it and adding a forecast.
-
-10. You can add filter to the visual. choose **Filter** on the element settings menu,  then choose to view filters. Add `item_id` as the filter field. 
-11. Publish the visual as new dashboard. Make sure you enabled **ad-hoc filtering** in Advanced publish options
-
-The forecasting filtered on `item_101` and `store_001` will look like below:
+[Amazon QuickSight](https://docs.aws.amazon.com/quicksight/latest/user/welcome.html) has ML features to give you hidden insights and trends in your data. One of these ML features is **ML-powered forecast**. The built-in ML forecast uses [Random Cut Forest (RCF) algorithm](https://docs.aws.amazon.com/quicksight/latest/user/concept-of-ml-algorithms.html) to detect seasonality, trends, exclude outliers, and impute missing values. For more details on how QuickSight uses RCF to generate forecasts, see the [developer guide](https://docs.aws.amazon.com/quicksight/latest/user/how-does-rcf-generate-forecasts.html).
 
 ![](img/quicksight_filter_item_101_store_001.png)
 
@@ -131,11 +110,17 @@ For more details refer to the Developer Guide [Forecasting and creating what-if 
 
 Besides a graphical forecasting, you can also add a forecast as a narrative in an insight widget. To learn more, see [Creating autonarratives with Amazon QuickSight](https://docs.aws.amazon.com/quicksight/latest/user/narratives-creating.html).
 
+Additional resources for Amazon QuickSight forecasting:
+- [ML-powered forecasting](https://docs.aws.amazon.com/quicksight/latest/user/forecast-function.html)
+
 ## Results and comparison
 
-TBD: add qualitative/quantitative comparison of model performance, add a summary tables across multiple services
+Open the [lab 6 notebook](./notebooks/lab_final_results.ipnyb) and follow the instructions.
 
-[Evaluating Predictor Accuracy](https://docs.aws.amazon.com/forecast/latest/dg/metrics.html)
+Additional resources about time series forecast accuracy evaluation
+- [Evaluating Predictor Accuracy](https://docs.aws.amazon.com/forecast/latest/dg/metrics.html)
+- [Evaluating Chronos models](https://github.com/amazon-science/chronos-forecasting/tree/main/scripts#evaluating-chronos-models)
+- [Forecasting time series - evaluation metrics](https://auto.gluon.ai/stable/tutorials/timeseries/forecasting-metrics.html)
 
 ## Clean up
 To avoid charges, you must remove all project-provisioned and generated resources from your AWS account. 
