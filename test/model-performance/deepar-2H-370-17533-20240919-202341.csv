@@ -1,0 +1,4 @@
+timestamp,metric_name,value,experiment
+20240919-202341,test:mean_wQuantileLoss,0.057275453987167074,deepar-2H-370-17533
+20240919-202341,train:final_loss,3.725597706708041,deepar-2H-370-17533
+20240919-202341,test:RMSE,621.6844993824717,deepar-2H-370-17533
