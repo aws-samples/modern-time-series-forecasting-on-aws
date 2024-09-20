@@ -59,6 +59,7 @@ Additional DeepAR links:
 - [Deep AR Forecasting](https://sagemaker.readthedocs.io/en/stable/algorithms/time_series/deep_ar.html)
 - [Example notebook](https://github.com/aws/amazon-sagemaker-examples/blob/main/introduction_to_amazon_algorithms/deepar_electricity/DeepAR-Electricity.ipynb)
 - [Deep Demand Forecasting with Amazon SageMaker notebook](https://github.com/awslabs/sagemaker-deep-demand-forecast/blob/mainline/src/deep-demand-forecast.ipynb)
+- [DeepAR: Probabilistic Forecasting with Autoregressive Recurrent Networks](https://arxiv.org/abs/1704.04110)
 - [Predictive Analytics with Time-series Machine Learning on Amazon Timestream](https://aws.amazon.com/blogs/database/predictive-analytics-with-time-series-machine-learning-on-amazon-timestream/)
 - [Bike-Share Demand Forecasting 2b: SageMaker DeepAR Algorithm](https://github.com/aws-samples/time-series-forecasting-on-aws/blob/main/2b_SageMaker_Built-In_DeepAR.ipynb)
 
