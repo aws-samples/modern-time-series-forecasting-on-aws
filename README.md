@@ -10,15 +10,34 @@ This workshop demonstrates how to use AWS services to implement time series fore
 6. Amazon SageMaker custom algorithm
 7. Amazon QuickSight forecast
 
-## Getting started
-To run the notebooks in this project you must use [SageMaker Studio](https://aws.amazon.com/sagemaker/studio/) which requires a [SageMaker domain](https://docs.aws.amazon.com/sagemaker/latest/dg/gs-studio-onboard.html).
+## How to use this workshop
+To use this workshop, you need an Amazon SageMaker domain. All workshop content is in Jupyter notebooks running on Amazon SageMaker. To get started, follow the instructions in the **Getting started** section. To clean up resources, follow the instructions in the **Clean-up** section. You can execute the notebooks in any order, and you don't need to switch between the notebooks and the workshop web page.
 
+## Workshop flow
+The notebooks from Lab 1 to Lab 5 are self-sufficient. You can run them in any order. If you're unfamiliar with time series forecasting, we recommend starting with the Lab 1 notebook and continuing from there. Alternatively, you can run only the notebooks that interest you, such as `lab4_chronos` or `lab5_autogluon`.
+
+The model training in Labs 1, 2, and 3 takes 15-40 minutes, depending on the algorithm. You don't need to wait for the training to complete before moving on to the next notebook. You can come back to the previous notebook once the training is done.
+
+Executing all five notebooks will take 2-3 hours. If you're new to time series forecasting, Jupyter notebooks, or Python, it may take longer.
+
+## Workshop costs
+The notebooks in this workshop create cost-generating resources in your account. Make sure you always delete created SageMaker inference endpoints, log out of Canvas, and stop JupyterLab spaces if you don't use them.
+
+If running all notebooks with all sections, including optional sections and training three models using **Standard** builds in Canvas, the estimated cost is approximately 90-100 USD. 
+
+Please note that your actual costs may vary depending on the duration of the workshop, the number of inference endpoints created, and the time the endpoints remain in service.
+
+To optimize costs, follow these recommendations:
+1. Run only **Quick** builds in Canvas to minimize costs. Note that in this case you cannot download model performance JSON files
+2. Use only a sample from the full dataset to train models and run all experiments. Each notebook contains code to create a small dataset with a sample from the time series
+3. Promptly delete SageMaker inference endpoints after use
+4. Use `ml.m5.xlarge` instance for JupyterLab app to balance performance and cost
+5. Limit Chronos experiments to one endpoint and a sample of the time series in the notebook `lab4_chronos`
+
+## Getting started
 If you'd lke to create a new domain, you have two options:
 1. Use the provided AWS CloudFormation [template](./cfn-templates/sagemaker-domain.yaml) that creates a SageMaker domain, a user profile, and adds the IAM roles required for executing the provided notebooks - this is the recommended approach
 1. Follow the onboarding [instructions](https://docs.aws.amazon.com/sagemaker/latest/dg/gs-studio-onboard.html) in the Developer Guide and create a new domain and a user profile via AWS Console
-
-## Workshop flow
-You can run all notebooks independently of each other and in any order. We recommend to start with the notebook `lab1_sagemaker_canvas` if you'd like to run the whole workshop.
 
 ## Datasets
 
@@ -124,7 +143,7 @@ Additional resources about time series forecast accuracy evaluation
 - [Forecasting time series - evaluation metrics](https://auto.gluon.ai/stable/tutorials/timeseries/forecasting-metrics.html)
 
 ## Clean up
-To avoid charges, you must remove all project-provisioned and generated resources from your AWS account. 
+To avoid unnecessary costs, you must remove all project-provisioned and generated resources from your AWS account. 
 
 ### Shut down SageMaker resources
 You must complete this section before deleting the SageMaker domain or the CloudFormation stack.
