@@ -106,6 +106,7 @@ Links to AutoGluon content:
 - AutoGluon Chronos
     - [AutoGluon forecasting with Chronos](https://auto.gluon.ai/stable/tutorials/timeseries/forecasting-chronos.html)
     - [Forecasting with Chronos notebook Colab](https://colab.research.google.com/github/autogluon/autogluon/blob/stable/docs/tutorials/timeseries/forecasting-chronos.ipynb)
+- [AutoGluon Cloud](https://auto.gluon.ai/cloud/dev/tutorials/autogluon-cloud.html)
 
 
 ## Example 6: Amazon SageMaker custom algorithm
@@ -175,7 +176,7 @@ If you provisioned a new VPC for the domain, go to the [VPC console](https://con
 - [GluonTS - Probabilistic Time Series Modeling in Python](https://github.com/awslabs/gluonts)
 - [Informer: Beyond Efficient Transformer for Long Sequence Time-Series Forecasting](https://arxiv.org/abs/2012.07436)
 
-### Books and whitepapers
+### Books and whitepapers
 - [Time Series Analysis on AWS: Learn how to build forecasting models and detect anomalies in your time series data](https://www.amazon.com/Time-Analysis-AWS-forecasting-anomalies-ebook/dp/B09MMLLWDY)
 - [Time Series Forecasting Principles with Amazon Forecast](https://docs.aws.amazon.com/whitepapers/latest/time-series-forecasting-principles-with-amazon-forecast/time-series-forecasting-principles-with-amazon-forecast.html)
 - [Large Language Models Are Zero-Shot Time Series Forecasters](https://arxiv.org/pdf/2310.07820)
