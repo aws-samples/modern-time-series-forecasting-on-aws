@@ -13,6 +13,39 @@ This workshop demonstrates how to use AWS services to implement time series fore
 ## How to use this workshop
 To use this workshop, you need an Amazon SageMaker domain. All workshop content is in Jupyter notebooks running on Amazon SageMaker. To get started, follow the instructions in the **Getting started** section. To clean up resources, follow the instructions in the **Clean-up** section. You can execute the notebooks in any order, and you don't need to switch between the notebooks and the workshop web page.
 
+## Required resources
+
+**Ignore this section if you're using an AWS-provided account as a part of an AWS-led workshop.**
+
+In order to be able to run notebooks and complete workshop labs you need access to the following resources in your AWS account. You can check quotas for all following resources in AWS console in [Service Quotas](https://us-east-1.console.aws.amazon.com/servicequotas/home/services/sagemaker/quotas) console.
+
+**Studio JupyterLab app**  
+Minimal required instance type is `ml.m5.2xlarge`. We recommend to use `ml.m5.4xlarge` as an instance to run all notebooks. If you have access to `ml.g5.4xlarge`, use this instance to run the notebooks.
+
+- Check quota for [`ml.m5.2xlarge`](https://us-east-1.console.aws.amazon.com/servicequotas/home/services/sagemaker/quotas/L-7C9662F1)
+- Check quota for [`ml.m5.4xlarge`](https://us-east-1.console.aws.amazon.com/servicequotas/home/services/sagemaker/quotas/L-2CA31BFA)
+- Check quota for [`ml.g5.4xlarge`](https://us-east-1.console.aws.amazon.com/servicequotas/home/services/sagemaker/quotas/L-81940D85)
+
+
+**Number of concurrent AutoML Jobs**  
+To follow the optimal flow of the workshop, you need to run at least three AutoML jobs in parallel. We recommend to have a quota set to six or more concurrent jobs.
+
+- Check quota for [maximum number of concurrent AutoML Jobs](https://us-east-1.console.aws.amazon.com/servicequotas/home/services/sagemaker/quotas/L-CFC2D5B6)
+
+**Training jobs**  
+To run a training job for DeepAR algorithm you need a `ml.c5.4xlarge` compute instance
+
+- Check quota for [`ml.c5.4xlarge`](https://us-east-1.console.aws.amazon.com/servicequotas/home/services/sagemaker/quotas/L-E7898792)
+
+**SageMaker real-time inference endpoints**  
+DeepAR, Chronos, and AutoGluon notebooks deploy SageMaker real-time inference endpoints to test models. You need access to the following compute instances for endpoint use:
+- Minimal for Autopilot and DeepAR endpoints: check [`ml.m5.xlarge`](https://us-east-1.console.aws.amazon.com/servicequotas/home/services/sagemaker/quotas/L-2F737F8D) 
+- Recommended for Autopilot and DeepAR endpoints: check [`ml.m5.4xlarge`](https://us-east-1.console.aws.amazon.com/servicequotas/home/services/sagemaker/quotas/L-E2649D46)
+- Minimal for Chronos Small endpoint: check [`ml.g5.xlarge`](https://us-east-1.console.aws.amazon.com/servicequotas/home/services/sagemaker/quotas/L-1928E07B)
+- Optional for Chronos Base: check [`ml.g5.2xlarge`](https://us-east-1.console.aws.amazon.com/servicequotas/home/services/sagemaker/quotas/L-9614C779)
+- Optional for Chronos Large: check [`ml.g5.4xlarge`](https://us-east-1.console.aws.amazon.com/servicequotas/home/services/sagemaker/quotas/L-C1B9A48D)
+
+
 ## Workshop flow
 The notebooks from Lab 1 to Lab 5 are self-sufficient. You can run them in any order. If you're unfamiliar with time series forecasting, we recommend starting with the Lab 1 notebook and continuing from there. Alternatively, you can run only the notebooks that interest you, such as `lab4_chronos` or `lab5_autogluon`.
 
