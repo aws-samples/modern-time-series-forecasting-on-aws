@@ -20,11 +20,16 @@ To use this workshop, you need an Amazon SageMaker domain. All workshop content 
 In order to be able to run notebooks and complete workshop labs you need access to the following resources in your AWS account. You can check quotas for all following resources in AWS console in [Service Quotas](https://us-east-1.console.aws.amazon.com/servicequotas/home/services/sagemaker/quotas) console.
 
 **Studio JupyterLab app**  
-Minimal required instance type is `ml.m5.2xlarge`. We recommend to use `ml.m5.4xlarge` as an instance to run all notebooks. If you have access to `ml.g5.4xlarge`, use this instance to run the notebooks.
+Minimal required instance type is `ml.m5.2xlarge`. We recommend to use `ml.m5.4xlarge` as an instance to run all notebooks. If you have access to GPU-instances like `ml.g5.4xlarge` or `ml.g6.4xlarge`, use these instance to run the notebooks. 
+
+To experiment with the full dataset with 370 time series in the lab 5 AutoGluon you need a GPU instance for the notebook - `ml.g5.4xlarge`/`ml.g6.4xlarge` or `ml.g5.8xlarge`/`ml.g6.8xlarge`.
 
 - Check quota for [`ml.m5.2xlarge`](https://us-east-1.console.aws.amazon.com/servicequotas/home/services/sagemaker/quotas/L-7C9662F1)
 - Check quota for [`ml.m5.4xlarge`](https://us-east-1.console.aws.amazon.com/servicequotas/home/services/sagemaker/quotas/L-2CA31BFA)
 - Check quota for [`ml.g5.4xlarge`](https://us-east-1.console.aws.amazon.com/servicequotas/home/services/sagemaker/quotas/L-81940D85)
+- Check quota for [`ml.g6.4xlarge`](https://us-east-1.console.aws.amazon.com/servicequotas/home/services/sagemaker/quotas/L-692B8304)
+- Check quota for [`ml.g5.8xlarge`](https://us-east-1.console.aws.amazon.com/servicequotas/home/services/sagemaker/quotas/L-19B6BAFC)
+- Check quota for [`ml.g6.8xlarge`](https://us-east-1.console.aws.amazon.com/servicequotas/home/services/sagemaker/quotas/L-804C2AFF)
 
 
 **Number of concurrent AutoML Jobs**  
