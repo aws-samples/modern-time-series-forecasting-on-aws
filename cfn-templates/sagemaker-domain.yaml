@@ -203,6 +203,15 @@ Resources:
                 - sagemaker:StopMlflowTrackingServer
                 - sagemaker:CreatePresignedMlflowTrackingServerUrl
               Resource: "*"
+        - PolicyName: q-developer-access
+          PolicyDocument: 
+            Version: 2012-10-17
+            Statement:
+              -
+                Effect: Allow
+                Action:
+                  - q:SendMessage
+                Resource: '*'
         - PolicyName: bedrock-models-access
           PolicyDocument:
             Version: 2012-10-17
@@ -575,7 +584,6 @@ Resources:
   DelayLambda:
     Type: AWS::Lambda::Function
     Properties:
-      FunctionName: DelayLambda
       Handler: index.lambda_handler
       Role: !GetAtt LambdaExecutionRole.Arn
       Runtime: python3.10
