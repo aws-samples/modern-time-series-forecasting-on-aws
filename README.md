@@ -10,6 +10,8 @@ This workshop demonstrates how to use AWS services to implement time series fore
 6. Amazon SageMaker custom algorithm
 7. Amazon QuickSight forecast
 
+The [workshop](https://catalog.us-east-1.prod.workshops.aws/workshops/76a419ba-6303-4e7c-ac02-47112ed7cb3f/en-US) is available in AWS workshop catalog. You can run this workshop on an AWS-led event or in your own AWS account.
+
 ## How to use this workshop
 To use this workshop, you need an Amazon SageMaker domain. All workshop content is in Jupyter notebooks running on Amazon SageMaker. To get started, follow the instructions in the **Getting started** section. To clean up resources, follow the instructions in the **Clean-up** section. You can execute the notebooks in any order, and you don't need to switch between the notebooks and the workshop web page.
 
@@ -235,12 +237,19 @@ If you provisioned a new VPC for the domain, go to the [VPC console](https://con
 - [Inventory Forecasting using Amazon SageMaker](https://catalog.us-east-1.prod.workshops.aws/workshops/866925a4-cb5f-4a3d-9cd7-80edc0aa5f0c/en-US)
 
 
-## QR code for this GitHub repository
+## QR codes and links
 
+### This GitHub repository
+Link: https://github.com/aws-samples/modern-time-series-forecasting-on-aws
 Short link: https://bit.ly/47hnKH6
 
 ![](./img/git-repo-qr-code.png)
 
+### AWS workshop
+Link: https://catalog.workshops.aws/modern-time-series-forecasting-on-aws/en-US
+Short link: https://bit.ly/4dBQ0G8
+
+![](./img/workshop-qr-code.svg)
 ---
 
 Copyright Amazon.com, Inc. or its affiliates. All Rights Reserved.

@@ -816,7 +816,7 @@ Resources:
         AppType: JupyterLab
         JupyterLabAppSettings:
           CodeRepositories: 
-            - RepositoryUrl: https://github.com/aws-samples/amazon-sagemaker-model-registry-patterns.git
+            - RepositoryUrl: https://github.com/aws-samples/modern-time-series-forecasting-on-aws.git
           DefaultResourceSpec:
             InstanceType: !Ref JupyterLabAppInstance
         SpaceStorageSettings:
