@@ -108,6 +108,7 @@ Additional SageMaker Autopilot API links:
 - [Time series forecasting algorithms in SageMaker](https://docs.aws.amazon.com/sagemaker/latest/dg/timeseries-forecasting-algorithms.html)
 - Example notebook [Time series Forecasting with Amazon SageMaker Autopilot](https://github.com/aws/amazon-sagemaker-examples/blob/main/autopilot/autopilot_time_series.ipynb)
 - [Lab 2 - Demand Forecasting with SageMaker Autopilot API](https://catalog.us-east-1.prod.workshops.aws/workshops/caef4710-3721-4957-a2ce-33799920ef72/en-US/40-sagemakerautopilot)
+- [Time series forecasting with Amazon SageMaker AutoML](https://aws.amazon.com/it/blogs/machine-learning/time-series-forecasting-with-amazon-sagemaker-automl/)
 
 ## Example 3: Amazon SageMaker DeepAR
 
@@ -228,6 +229,7 @@ If you provisioned a new VPC for the domain, go to the [VPC console](https://con
 - [Capture public health insights more quickly with no-code machine learning using Amazon SageMaker Canvas](https://aws.amazon.com/blogs/machine-learning/capture-public-health-insights-more-quickly-with-no-code-machine-learning-using-amazon-sagemaker-canvas/)
 - [Speed up your time series forecasting by up to 50 percent with Amazon SageMaker Canvas UI and AutoML APIs](https://aws.amazon.com/blogs/machine-learning/speed-up-your-time-series-forecasting-by-up-to-50-percent-with-amazon-sagemaker-canvas-ui-and-automl-apis/)
 - [Sagemaker Automated Model Tuning](https://aws.amazon.com/blogs/aws/sagemaker-automatic-model-tuning/)
+- [Time series forecasting with Amazon SageMaker AutoML](https://aws.amazon.com/it/blogs/machine-learning/time-series-forecasting-with-amazon-sagemaker-automl/)
 
 ### Workshops and notebooks
 - [Time series forecasting with AWS services workshop](https://catalog.us-east-1.prod.workshops.aws/workshops/caef4710-3721-4957-a2ce-33799920ef72/en-US)
@@ -240,13 +242,13 @@ If you provisioned a new VPC for the domain, go to the [VPC console](https://con
 ## QR codes and links
 
 ### This GitHub repository
-Link: https://github.com/aws-samples/modern-time-series-forecasting-on-aws
+Link: https://github.com/aws-samples/modern-time-series-forecasting-on-aws  
 Short link: https://bit.ly/47hnKH6
 
 ![](./img/git-repo-qr-code.png)
 
 ### AWS workshop
-Link: https://catalog.workshops.aws/modern-time-series-forecasting-on-aws/en-US
+Link: https://catalog.workshops.aws/modern-time-series-forecasting-on-aws/en-US  
 Short link: https://bit.ly/4dBQ0G8
 
 ![](./img/workshop-qr-code.svg)
