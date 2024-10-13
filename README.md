@@ -221,6 +221,7 @@ If you provisioned a new VPC for the domain, go to the [VPC console](https://con
 - [Time Series Analysis on AWS: Learn how to build forecasting models and detect anomalies in your time series data](https://www.amazon.com/Time-Analysis-AWS-forecasting-anomalies-ebook/dp/B09MMLLWDY)
 - [Time Series Forecasting Principles with Amazon Forecast](https://docs.aws.amazon.com/whitepapers/latest/time-series-forecasting-principles-with-amazon-forecast/time-series-forecasting-principles-with-amazon-forecast.html)
 - [Large Language Models Are Zero-Shot Time Series Forecasters](https://arxiv.org/pdf/2310.07820)
+- [An Evaluation of Standard Statistical Models and LLMs on Time Series Forecasting](https://arxiv.org/html/2408.04867v1)
 - [Forecasting: Principles and Practice](https://otexts.com/fpp3/)
 
 ### Blog posts
