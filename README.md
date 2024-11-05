@@ -7,8 +7,8 @@ This workshop demonstrates how to use AWS services to implement time series fore
 3. Amazon SageMaker DeepAR
 4. Chronos
 5. AutoGluon
-6. Amazon SageMaker custom algorithm
-7. Amazon QuickSight forecast
+
+Additional notebooks cover forecasting with GluonTS, a custom algorithm on SageMaker, and Amazon QuickSight.
 
 The [workshop](https://catalog.us-east-1.prod.workshops.aws/workshops/76a419ba-6303-4e7c-ac02-47112ed7cb3f/en-US) is available in AWS workshop catalog. You can run this workshop on an AWS-led event or in your own AWS account.
 
@@ -149,8 +149,20 @@ Links to AutoGluon content:
     - [Forecasting with Chronos notebook Colab](https://colab.research.google.com/github/autogluon/autogluon/blob/stable/docs/tutorials/timeseries/forecasting-chronos.ipynb)
 - [AutoGluon Cloud](https://auto.gluon.ai/cloud/dev/tutorials/autogluon-cloud.html)
 
+## Additional examples
+The additional notebooks in the folder `notebooks/additional` cover more approaches you can use for time series forecasting. These notebooks demonstrate:
+1. GluonTS
+2. Custom algorithms on SageMaker
+3. Amazon QuickSight forecast
 
-## Example 6: Amazon SageMaker custom algorithm
+### Example 1A: GluonTS
+
+Navigate to the `additional` folder inside the `notebooks` folder. Open the [lab 1A notebook](./notebooks/additional/lab1a_gluonts.ipynb) and follow the instructions.
+
+- [GluonTS: Probabilistic and Neural Time Series Modeling in Python](https://www.jmlr.org/papers/volume21/19-820/19-820.pdf)
+- [Creating neural time series models with Gluon Time Series](https://aws.amazon.com/blogs/machine-learning/creating-neural-time-series-models-with-gluon-time-series/)
+
+### Example 2A: Amazon SageMaker custom algorithm
 
 This example is under development.
 
@@ -160,8 +172,7 @@ Refer to the following resources to see how you can run custom algorithms on Sag
 - [Informer: Beyond Efficient Transformer for Long Sequence Time-Series Forecasting (AAAI'21 Best Paper)](https://github.com/aws-samples/time-series-forecasting-on-aws/blob/main/3_SagaMaker_Custom_algorithm_Informer.ipynb)
 - [GluonTS - Probabilistic Time Series Modeling in Python](https://github.com/awslabs/gluonts)
 
-
-## Example 7: Amazon QuickSight forecast
+### Example 3A: Amazon QuickSight forecast
 [Amazon QuickSight](https://docs.aws.amazon.com/quicksight/latest/user/welcome.html) has ML features to give you hidden insights and trends in your data. One of these ML features is **ML-powered forecast**. The built-in ML forecast uses [Random Cut Forest (RCF) algorithm](https://docs.aws.amazon.com/quicksight/latest/user/concept-of-ml-algorithms.html) to detect seasonality, trends, exclude outliers, and impute missing values. For more details on how QuickSight uses RCF to generate forecasts, see the [developer guide](https://docs.aws.amazon.com/quicksight/latest/user/how-does-rcf-generate-forecasts.html).
 
 ![](img/quicksight_filter_item_101_store_001.png)
@@ -223,6 +234,7 @@ If you provisioned a new VPC for the domain, go to the [VPC console](https://con
 - [Large Language Models Are Zero-Shot Time Series Forecasters](https://arxiv.org/pdf/2310.07820)
 - [An Evaluation of Standard Statistical Models and LLMs on Time Series Forecasting](https://arxiv.org/html/2408.04867v1)
 - [Forecasting: Principles and Practice](https://otexts.com/fpp3/)
+- [A simple combination of univariate models](https://www.sciencedirect.com/science/article/abs/pii/S0169207019300585)
 
 ### Blog posts
 - [Robust time series forecasting with MLOps on Amazon SageMaker](https://aws.amazon.com/blogs/machine-learning/robust-time-series-forecasting-with-mlops-on-amazon-sagemaker/)
