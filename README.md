@@ -52,7 +52,6 @@ DeepAR, Chronos, and AutoGluon notebooks deploy SageMaker real-time inference en
 - Optional for Chronos Base: check [`ml.g5.2xlarge`](https://us-east-1.console.aws.amazon.com/servicequotas/home/services/sagemaker/quotas/L-9614C779)
 - Optional for Chronos Large: check [`ml.g5.4xlarge`](https://us-east-1.console.aws.amazon.com/servicequotas/home/services/sagemaker/quotas/L-C1B9A48D)
 
-
 ## Workshop flow
 The notebooks from Lab 1 to Lab 5 are self-sufficient. You can run them in any order. If you're unfamiliar with time series forecasting, we recommend starting with the Lab 1 notebook and continuing from there. Alternatively, you can run only the notebooks that interest you, such as `lab4_chronos` or `lab5_autogluon`.
 
