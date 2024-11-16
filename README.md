@@ -160,6 +160,7 @@ Navigate to the `additional` folder inside the `notebooks` folder. Open the [lab
 
 - [GluonTS: Probabilistic and Neural Time Series Modeling in Python](https://www.jmlr.org/papers/volume21/19-820/19-820.pdf)
 - [Creating neural time series models with Gluon Time Series](https://aws.amazon.com/blogs/machine-learning/creating-neural-time-series-models-with-gluon-time-series/)
+- [Deep demand forecast with Amazon SageMaker](https://github.com/awslabs/sagemaker-deep-demand-forecast)
 
 ### Example 2A: Amazon SageMaker custom algorithm
 
@@ -249,6 +250,7 @@ If you provisioned a new VPC for the domain, go to the [VPC console](https://con
 - [Deep Demand Forecasting with Amazon SageMaker notebook](https://github.com/awslabs/sagemaker-deep-demand-forecast/blob/mainline/src/deep-demand-forecast.ipynb)
 - [Timeseries Forecasting on AWS](https://github.com/aws-samples/time-series-forecasting-on-aws)
 - [Inventory Forecasting using Amazon SageMaker](https://catalog.us-east-1.prod.workshops.aws/workshops/866925a4-cb5f-4a3d-9cd7-80edc0aa5f0c/en-US)
+- [Tutorial at IJCAI 2021 (with videos)](https://lovvge.github.io/Forecasting-Tutorial-IJCAI-2021/)
 
 
 ## QR codes and links
