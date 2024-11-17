@@ -158,6 +158,9 @@ The additional notebooks in the folder `notebooks/additional` cover more approac
 
 Navigate to the `additional` folder inside the `notebooks` folder. Open the [lab 1A notebook](./notebooks/additional/lab1a_gluonts.ipynb) and follow the instructions.
 
+The notebook `additional\lab1a_gluonts` also contains an end-to-end example of productization of a time series forecasting workflow. The lab demonstrates how to create an automatic SageMaker pipeline with data processing, model training, model evaluation, model registration in the model registry, and model deployment to a SageMaker endpoint. The notebook uses [GluonTS implementation](https://github.com/awslabs/gluonts/blob/dev/src/gluonts/torch/model/tft/estimator.py) of Temporal Fusion Transformer forecast and SageMaker Python SDK PyTorch framework together with SageMaker built-in [Deep Learning Containers (DLC)](https://github.com/aws/deep-learning-containers).
+
+Links to GluonTS content:
 - [GluonTS: Probabilistic and Neural Time Series Modeling in Python](https://www.jmlr.org/papers/volume21/19-820/19-820.pdf)
 - [Creating neural time series models with Gluon Time Series](https://aws.amazon.com/blogs/machine-learning/creating-neural-time-series-models-with-gluon-time-series/)
 - [Deep demand forecast with Amazon SageMaker](https://github.com/awslabs/sagemaker-deep-demand-forecast)

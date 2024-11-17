@@ -126,12 +126,12 @@ if __name__ == "__main__":
     )
 
     # emit test metrics - SageMaker collects them from the log stream
-    print(f"test_MSE:{agg_metrics['MSE']}")
-    print(f"test_MAPE:{agg_metrics['MAPE']}")
-    print(f"test_sMAPE:{agg_metrics['sMAPE']}")
-    print(f"test_RMSE:{agg_metrics['RMSE']}")
-    print(f"test_mean_wQuantileLoss:{agg_metrics['mean_wQuantileLoss']}")
-    print(f"test_mean_absolute_QuantileLoss:{agg_metrics['mean_absolute_QuantileLoss']}")
+    print(f"test_MSE={agg_metrics['MSE']}")
+    print(f"test_MAPE={agg_metrics['MAPE']}")
+    print(f"test_sMAPE={agg_metrics['sMAPE']}")
+    print(f"test_RMSE={agg_metrics['RMSE']}")
+    print(f"test_mean_wQuantileLoss={agg_metrics['mean_wQuantileLoss']}")
+    print(f"test_mean_absolute_QuantileLoss={agg_metrics['mean_absolute_QuantileLoss']}")
 
     # save predictor and results
     # os.makedirs('./output/model', exist_ok=True)
