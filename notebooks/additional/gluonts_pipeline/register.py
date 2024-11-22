@@ -5,6 +5,7 @@ def register(
     training_job_name,
     model_package_group_name,
     model_approval_status='PendingManualApproval',
+    pipeline_run_id=None,
 )-> Dict[str,str]:
     """
     Register model trained by the pipeline trained job in SageMaker model registry.
@@ -14,11 +15,11 @@ def register(
     estimator = Estimator.attach(training_job_name)
 
     print(f'Registering the model in {model_package_group_name}')
-    supported_instances = ['ml.m5.2xlarge', 'ml.m5.2xlarge', "ml.g5.xlarge", 'ml.g5.2xlarge']
+    supported_instances = ['ml.m5.xlarge', 'ml.m5.2xlarge', "ml.g5.xlarge", 'ml.g5.2xlarge']
     
     model_package = estimator.register(
-        content_types=["text/json"],
-        response_types=["text/json"],
+        content_types=["application/json"],
+        response_types=["application/json"],
         inference_instances=supported_instances,
         transform_instances=supported_instances,
         model_package_group_name=model_package_group_name,
@@ -28,7 +29,10 @@ def register(
         task="OTHER", 
         framework='PYTORCH',
         framework_version='2.3',
-        description='GluonTS TFT model group'
+        description='GluonTS TFT model group',
+        customer_metadata_properties={
+            'pipeline_run_id':pipeline_run_id,
+        }
     )
 
     print('### Model registration completed. Exiting.')

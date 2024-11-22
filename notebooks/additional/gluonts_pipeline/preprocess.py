@@ -4,12 +4,19 @@ from gluonts.dataset.jsonl import JsonLinesWriter
 from pathlib import Path
 from gluonts.dataset.split import DateSplitter
 from gluonts.dataset.pandas import PandasDataset
+from gluonts.dataset.field_names import FieldName
 import pandas as pd
 import numpy as np
 import boto3
 import zipfile
 import json
+import random
+import string
 
+def _generate_unique_id(length=12):
+    characters = string.ascii_lowercase + string.digits
+    return ''.join(random.choices(characters, k=length))
+    
 def preprocess(
     input_data_s3_path,
     output_s3_prefix,
@@ -19,11 +26,15 @@ def preprocess(
     data_end,
     backtest_windows=4,
     sample_size=0,
+    pipeline_run_id=None,
 ) -> Dict[str,str]:
     """
     Prepares time series data for training. 
     """
-    
+    # if called without pipeline_run_id, generate a unique run_id
+    if not pipeline_run_id:
+        pipeline_run_id = _generate_unique_id()
+        
     # load raw dataset 
     print(f'Downloading from {input_data_s3_path}')
 
@@ -78,7 +89,7 @@ def preprocess(
     len_train = len(train_entry['target'])
 
     print(f'--------------------------------------------------------')
-    print(f"The test dataset contains {len(ts_dataset)} time series")
+    print(f"The test dataset contains {len(train_ds)} time series: {[e[FieldName.ITEM_ID] for e in train_ds]}")
     print(f"The test dataset starts {test_entry['start'].to_timestamp()} and ends {test_entry['start'] + len_test} and contains {len_test} data points")
     print(f"The train dataset starts {train_entry['start']} and ends {train_entry['start'] + len_train} and contains {len_train} data points")
     print(f"The backtest contains {len_test-len_train} data points and has {(len_test-len_train)/prediction_length} windows of {prediction_length} length")
@@ -89,8 +100,8 @@ def preprocess(
     test_file_name = 'test.jsonl.gz'
     train_file_path = Path(f'./data/{train_file_name}')
     test_file_path = Path(f'./data/{test_file_name}')
-    train_file_s3_path = f'{output_s3_prefix}/train/{train_file_name}'
-    test_file_s3_path = f'{output_s3_prefix}/test/{test_file_name}'
+    train_file_s3_path = f'{output_s3_prefix}/{pipeline_run_id}/train/{train_file_name}'
+    test_file_s3_path = f'{output_s3_prefix}/{pipeline_run_id}/test/{test_file_name}'
     
     JsonLinesWriter().write_to_file(train_ds, train_file_path)
     JsonLinesWriter().write_to_file(ts_dataset, test_file_path)
@@ -113,6 +124,7 @@ def preprocess(
     return {
         'train_data':train_file_s3_path,
         'test_data':test_file_s3_path,
+        'pipeline_run_id':pipeline_run_id,
     }
 
 

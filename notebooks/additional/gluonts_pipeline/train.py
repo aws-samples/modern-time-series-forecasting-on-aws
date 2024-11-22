@@ -8,6 +8,7 @@ from gluonts.dataset.jsonl import JsonLinesFile
 from pathlib import Path
 from gluonts.dataset.common import ListDataset
 from gluonts.model.predictor import Predictor
+from gluonts.dataset.field_names import FieldName
 from gluonts.dataset.split import OffsetSplitter
 from gluonts.dataset.util import to_pandas
 from gluonts.evaluation import Evaluator
@@ -87,13 +88,13 @@ if __name__ == "__main__":
 
     train_entry = next(iter(train_ds))
     test_entry = next(iter(test_ds))
-    len_train = train_entry['target'].shape[0]
-    len_test = test_entry['target'].shape[0]
+    len_train = train_entry[FieldName.TARGET].shape[0]
+    len_test = test_entry[FieldName.TARGET].shape[0]
     
     print(f'--------------------------------------------------------')
-    print(f"The test dataset contains {len(train_ds)} time series: {[e['item_id'] for e in train_ds]}")
-    print(f"The test dataset starts {test_entry['start'].to_timestamp()} and ends {test_entry['start'] + len_test} and contains {len_test} data points")
-    print(f"The train dataset starts {train_entry['start']} and ends {train_entry['start'] + len_train} and contains {len_train} data points")
+    print(f"The test dataset contains {len(train_ds)} time series: {[e[FieldName.ITEM_ID] for e in train_ds]}")
+    print(f"The test dataset starts {test_entry[FieldName.START].to_timestamp()} and ends {test_entry[FieldName.START] + len_test} and contains {len_test} data points")
+    print(f"The train dataset starts {train_entry[FieldName.START]} and ends {train_entry[FieldName.START] + len_train} and contains {len_train} data points")
     print(f"The backtest contains {len_test-len_train} data points and has {(len_test-len_train)/hyperparameters['prediction_length']} windows of {hyperparameters['prediction_length']} length")
     print(f'--------------------------------------------------------')
 
@@ -110,9 +111,6 @@ if __name__ == "__main__":
             'context_length':hyperparameters['context_length'],
         },
     )
-
-    # emit training metrics - SageMaker collects them from the log stream
-    # TBD
     
     # evaluation
     print(f"Evaluating the model on {hyperparameters['backtest_windows']} rolling windows")
