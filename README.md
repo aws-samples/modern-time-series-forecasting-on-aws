@@ -134,6 +134,7 @@ Links to more Chronos content:
 - [Adapting language model architectures for time series forecasting](https://www.amazon.science/blog/adapting-language-model-architectures-for-time-series-forecasting)
 - [Evaluating Chronos models](https://github.com/amazon-science/chronos-forecasting/blob/main/scripts/README.md#evaluating-chronos-models)
 - [Chronos-related content on Chronos GitHub](https://github.com/amazon-science/chronos-forecasting?tab=readme-ov-file#-coverage)
+- [Fast and accurate zero-shot forecasting with Chronos-Bolt and AutoGluon](https://aws.amazon.com/blogs/machine-learning/fast-and-accurate-zero-shot-forecasting-with-chronos-bolt-and-autogluon/)
 
 
 ## Example 5: AutoGluon
@@ -162,7 +163,8 @@ Navigate to the `additional` folder inside the `notebooks` folder. Open the [lab
 The notebook `additional\lab1a_gluonts` also contains an end-to-end example of productization of a time series forecasting workflow. The lab demonstrates how to create a reproducible SageMaker pipeline with data processing, model training, model evaluation, model registration in the model registry, and model deployment to a SageMaker endpoint. The notebook uses [GluonTS implementation](https://github.com/awslabs/gluonts/blob/dev/src/gluonts/torch/model/tft/estimator.py) of Temporal Fusion Transformer forecast and SageMaker Python SDK PyTorch framework together with SageMaker built-in [Deep Learning Containers (DLC)](https://github.com/aws/deep-learning-containers).
 
 Links to GluonTS content:
-- [GluonTS: Probabilistic and Neural Time Series Modeling in Python](https://www.jmlr.org/papers/volume21/19-820/19-820.pdf)
+- [GluonTS: Probabilistic and Neural Time Series Modeling in Python](https://www.jmlr.org/papers/volume21/19-820/19-820.pdf): paper
+- [GluonTS - Probabilistic Time Series Modeling in Python](https://github.com/awslabs/gluonts): GitHub repository
 - [Creating neural time series models with Gluon Time Series](https://aws.amazon.com/blogs/machine-learning/creating-neural-time-series-models-with-gluon-time-series/)
 - [Deep demand forecast with Amazon SageMaker](https://github.com/awslabs/sagemaker-deep-demand-forecast)
 
@@ -174,7 +176,8 @@ Refer to the following resources to see how you can run custom algorithms on Sag
 - [Robust time series forecasting with MLOps on Amazon SageMaker](https://aws.amazon.com/blogs/machine-learning/robust-time-series-forecasting-with-mlops-on-amazon-sagemaker/)
 - [Deep demand forecast with Amazon SageMaker](https://github.com/awslabs/sagemaker-deep-demand-forecast)
 - [Informer: Beyond Efficient Transformer for Long Sequence Time-Series Forecasting (AAAI'21 Best Paper)](https://github.com/aws-samples/time-series-forecasting-on-aws/blob/main/3_SagaMaker_Custom_algorithm_Informer.ipynb)
-- [GluonTS - Probabilistic Time Series Modeling in Python](https://github.com/awslabs/gluonts)
+- [TiDE](https://arxiv.org/pdf/2304.08424.pdf)
+
 
 ### Example 3A: Amazon QuickSight forecast
 [Amazon QuickSight](https://docs.aws.amazon.com/quicksight/latest/user/welcome.html) has ML features to give you hidden insights and trends in your data. One of these ML features is **ML-powered forecast**. The built-in ML forecast uses [Random Cut Forest (RCF) algorithm](https://docs.aws.amazon.com/quicksight/latest/user/concept-of-ml-algorithms.html) to detect seasonality, trends, exclude outliers, and impute missing values. For more details on how QuickSight uses RCF to generate forecasts, see the [developer guide](https://docs.aws.amazon.com/quicksight/latest/user/how-does-rcf-generate-forecasts.html).
@@ -231,6 +234,7 @@ If you provisioned a new VPC for the domain, go to the [VPC console](https://con
 - [AutoGluon Time series forecasting](https://auto.gluon.ai/stable/tutorials/timeseries/index.html)
 - [GluonTS - Probabilistic Time Series Modeling in Python](https://github.com/awslabs/gluonts)
 - [Informer: Beyond Efficient Transformer for Long Sequence Time-Series Forecasting](https://arxiv.org/abs/2012.07436)
+- [Sundial: A Family of Highly Capable Time Series Foundation Models](https://arxiv.org/abs/2502.00816v1)
 
 ### Books and whitepapers
 - [Time Series Analysis on AWS: Learn how to build forecasting models and detect anomalies in your time series data](https://www.amazon.com/Time-Analysis-AWS-forecasting-anomalies-ebook/dp/B09MMLLWDY)
